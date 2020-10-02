@@ -133,11 +133,11 @@ THREE.PlayerControls = function ( camera, player, domElement ) {
 
 	this.init = function() {
 
-		this.camera.position.x = this.player.position.x + 2;
-		this.camera.position.y = this.player.position.y + 2;
-		this.camera.position.z = this.player.position.x + 2;
-
-		this.camera.lookAt( this.player.position );
+		// this.camera.position.x = this.player.position.x + 2;
+		// this.camera.position.y = this.player.position.y + 2;
+		// this.camera.position.z = this.player.position.x + 2;
+		//
+		// this.camera.lookAt( this.player.position );
 
 	};
 
@@ -177,8 +177,8 @@ THREE.PlayerControls = function ( camera, player, domElement ) {
 
 		if ( this.autoRotate ) {
 
-			this.camera.position.x += this.autoRotateSpeed * ( ( this.player.position.x + 8 * Math.sin( this.player.rotation.y ) ) - this.camera.position.x );
-			this.camera.position.z += this.autoRotateSpeed * ( ( this.player.position.z + 8 * Math.cos( this.player.rotation.y ) ) - this.camera.position.z );
+			// this.camera.position.x += this.autoRotateSpeed * ( ( this.player.position.x + 8 * Math.sin( this.player.rotation.y ) ) - this.camera.position.x );
+			// this.camera.position.z += this.autoRotateSpeed * ( ( this.player.position.z + 8 * Math.cos( this.player.rotation.y ) ) - this.camera.position.z );
 
 		} else {
 
@@ -226,8 +226,8 @@ THREE.PlayerControls = function ( camera, player, domElement ) {
 	        this.player.position.x -= this.moveSpeed * Math.sin( this.player.rotation.y );
 	        this.player.position.z -= this.moveSpeed * Math.cos( this.player.rotation.y );
 
-	        this.camera.position.x -= this.moveSpeed * Math.sin( this.player.rotation.y );
-	        this.camera.position.z -= this.moveSpeed * Math.cos( this.player.rotation.y );
+	        // this.camera.position.x -= this.moveSpeed * Math.sin( this.player.rotation.y );
+	        // this.camera.position.z -= this.moveSpeed * Math.cos( this.player.rotation.y );
 
 	    }
 
@@ -239,8 +239,8 @@ THREE.PlayerControls = function ( camera, player, domElement ) {
 	        this.player.position.x += this.moveSpeed * Math.sin( this.player.rotation.y );
 	        this.player.position.z += this.moveSpeed * Math.cos( this.player.rotation.y );
 
-	        this.camera.position.x += this.moveSpeed * Math.sin( this.player.rotation.y );
-	        this.camera.position.z += this.moveSpeed * Math.cos( this.player.rotation.y );
+	        // this.camera.position.x += this.moveSpeed * Math.sin( this.player.rotation.y );
+	        // this.camera.position.z += this.moveSpeed * Math.cos( this.player.rotation.y );
 
 	    }
 
@@ -269,8 +269,8 @@ THREE.PlayerControls = function ( camera, player, domElement ) {
 	        this.player.position.x -= this.moveSpeed * Math.cos( this.player.rotation.y );
 	        this.player.position.z += this.moveSpeed * Math.sin( this.player.rotation.y );
 
-	        this.camera.position.x -= this.moveSpeed * Math.cos( this.player.rotation.y );
-	        this.camera.position.z += this.moveSpeed * Math.sin( this.player.rotation.y );
+	        // this.camera.position.x -= this.moveSpeed * Math.cos( this.player.rotation.y );
+	        // this.camera.position.z += this.moveSpeed * Math.sin( this.player.rotation.y );
 
 	    }
 
@@ -282,8 +282,8 @@ THREE.PlayerControls = function ( camera, player, domElement ) {
 	        this.player.position.x += this.moveSpeed * Math.cos( this.player.rotation.y );
 	        this.player.position.z -= this.moveSpeed * Math.sin( this.player.rotation.y );
 
-	        this.camera.position.x += this.moveSpeed * Math.cos( this.player.rotation.y );
-	        this.camera.position.z -= this.moveSpeed * Math.sin( this.player.rotation.y );
+	        // this.camera.position.x += this.moveSpeed * Math.cos( this.player.rotation.y );
+	        // this.camera.position.z -= this.moveSpeed * Math.sin( this.player.rotation.y );
 
 	    }
 

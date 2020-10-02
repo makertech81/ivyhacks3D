@@ -67,9 +67,56 @@ function initMainPlayer(){
 
 //load the game environemnt
 function loadEnvironment(){
-  var sphere_geometry = new THREE.SphereGeometry( 1 );
-	var sphere_material = new THREE.MeshNormalMaterial();
-	var sphere = new THREE.Mesh( sphere_geometry, sphere_material );
+  // var sphere_geometry = new THREE.SphereGeometry( 1 );
+	// var sphere_material = new THREE.MeshNormalMaterial();
+	// var sphere = new THREE.Mesh( sphere_geometry, sphere_material );
 
-	scene.add( sphere );
+floor = new THREE.Mesh(
+  new THREE.PlaneGeometry(100,75,10,10),
+  new THREE.MeshBasicMaterial({color: 0xffffff, wireframe:true})
+);
+
+floor.rotation.x -= Math.PI / 2;
+floor.position.y -= 0.5;
+	scene.add(floor);
+
+//WALL FRONT
+wallFront = new THREE.Mesh(
+    new THREE.PlaneGeometry(100,50,10,10),
+    new THREE.MeshBasicMaterial({color: 0xccffcc, wireframe:false})
+);
+
+wallFront.position.z = -37;
+wallFront.position.y += 24;
+//wallRight.rotation.y = THREE.Math.degToRad( 90 );;
+scene.add(wallFront);
+
+// //Plane
+// var planeGeoemtry = new THREE.PlaneGeoemtry(70,30,1,1);
+// var planeMaterial = new THREE.MeshBasicMaterial({color: green});
+//
+// var plane = new Physijs.BoxMesh(planeGeoemtry, planeMaterial);
+// scene.add(plane);
+//
+// var material = new THREE.MeshBasicMaterial({
+//     color: 0xccffcc,
+//     side: THREE.FrontSide,
+//     //wireframe:true
+// });
+//
+// var geometryLateral = new THREE.BoxGeometry(1, 40, 10);//thickness, height, length
+// var wall1 = new Physijs.BoxMesh(geometryLateral, material);
+// scene.add(wall1);
+// wall1.position.x=-20;
+// var wall2 = new Physijs.BoxMesh(geometryLateral, material);
+// scene.add(wall2);
+// wall2.position.x=10;
+//
+// var geo = new THREE.BoxGeometry(60, 40, 5);
+// var wall3 = new Physijs.BoxMesh(geo, material);
+// scene.add(wall3);
+// wall3.position.x=0;
+// wall3.position.y=0;
+// wall3.position.z=20;
+
 }
