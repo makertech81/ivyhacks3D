@@ -3,32 +3,28 @@ var Player = function(playerID) {
   this.isMainPlayer = false;
   this.mesh;
 
-  //player model
-  var cube_geometry = new THREE.BoxGeometry( 1, 1, 1 );
-	var cube_material = new THREE.MeshBasicMaterial( {color: 0x7777ff, wireframe: false} );
-
-	var scope = this;
-
+  var scope = this;
 
   this.init = function(){
-    scope.mesh = new THREE.Mesh(cube_geometry, cube_material);
-    scene.add(scope.mesh);
-
+    scope.mesh = new BABYLON.Mesh.CreateBox("crate", 2, scene);
+    scope.mesh.material = new BABYLON.StandardMaterial("Mat", scene);
+    scope.mesh.material.diffuseTexture = new BABYLON.Texture("textures/crate.png", scene);
+    scope.mesh.material.diffuseTexture.hasAlpha = true;
+    scope.mesh.position = new BABYLON.Vector3(5, -9, -10);
     if (scope.isMainPlayer) {
       //Give user control of their player
-      controls = new THREE.PlayerControls(camera, scope.mesh);
+      controls = new BABYLON.PlayerControls(camera, scope.mesh);
       controls.init();
     }
   };
 
-  //if they move, update their positions and rotations
   this.setOrientation = function( position, rotation ) {
-		if ( scope.mesh ) {
-			scope.mesh.position.copy( position );
-			scope.mesh.rotation.x = rotation.x;
-			scope.mesh.rotation.y = rotation.y;
-			scope.mesh.rotation.z = rotation.z;
+    if ( scope.mesh ) {
+      scope.mesh.position = position ;
+      scope.mesh.rotation.x = rotation.x;
+      scope.mesh.rotation.y = rotation.y;
+      scope.mesh.rotation.z = rotation.z;
 
-		}
-	};
-};
+    }
+  };
+}

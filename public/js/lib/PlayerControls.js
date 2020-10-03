@@ -1,14 +1,11 @@
-THREE.PlayerControls = function ( camera, player, domElement ) {
-
+BABYLON.PlayerControls = function(camera, player, domElement) {
 	this.camera = camera;
 	this.player = player;
-	this.domElement = ( domElement !== undefined ) ? domElement : document;
-
-	// API
+	this.domElement = (domElement !== undefined) ? domElement : document;
 
 	this.enabled = true;
 
-	this.center = new THREE.Vector3( player.position.x, player.position.y, player.position.z );
+	this.center = this.center = new BABYLON.Vector3( player.position.x, player.position.y, player.position.z );
 
 	this.moveSpeed = 0.2;
 	this.turnSpeed = 0.1;
@@ -29,34 +26,29 @@ THREE.PlayerControls = function ( camera, player, domElement ) {
 	this.minDistance = 0;
 	this.maxDistance = Infinity;
 
-	// internals
-
 	var scope = this;
 
 	var EPS = 0.000001;
 	var PIXELS_PER_ROUND = 1800;
 
-	var rotateStart = new THREE.Vector2();
-	var rotateEnd = new THREE.Vector2();
-	var rotateDelta = new THREE.Vector2();
+	var rotateStart = new BABYLON.Vector2();
+	var rotateEnd = new BABYLON.Vector2();
+	var rotateDelta = new BABYLON.Vector2();
 
-	var zoomStart = new THREE.Vector2();
-	var zoomEnd = new THREE.Vector2();
-	var zoomDelta = new THREE.Vector2();
+	var zoomStart = new BABYLON.Vector2();
+	var zoomEnd = new BABYLON.Vector2();
+	var zoomDelta = new BABYLON.Vector2();
 
 	var phiDelta = 0;
 	var thetaDelta = 0;
 	var scale = 1;
 
-	var lastPosition = new THREE.Vector3( player.position.x, player.position.y, player.position.z );
+	var lastPosition = new BABYLON.Vector3( player.position.x, player.position.y, player.position.z );
 	var playerIsMoving = false;
 
 	var keyState = {};
 	var STATE = { NONE: -1, ROTATE: 0, ZOOM: 1, PAN: 2 };
 	var state = STATE.NONE;
-
-	// events
-
 	var changeEvent = { type: 'change' };
 
 	this.rotateLeft = function ( angle ) {
@@ -137,22 +129,18 @@ THREE.PlayerControls = function ( camera, player, domElement ) {
 		this.camera.position.y = this.player.position.y + 2;
 		this.camera.position.z = this.player.position.x + 2;
 
-		this.camera.lookAt( this.player.position );
+		this.camera.setTarget( this.player.position );
 
 	};
 
 	this.update = function() {
-
 		this.checkKeyStates();
 
 		this.center = this.player.position;
 
 		var position = this.camera.position;
-		var offset = position.clone().sub( this.center );
-
-		// angle from z-axis around y-axis
-
-		var theta = Math.atan2( offset.x, offset.z );
+		var offset = position.clone().sub(this.center);
+		var theta = Math.atan2(offset.x,offset.z);
 
 		// angle from y-axis
 
@@ -186,13 +174,11 @@ THREE.PlayerControls = function ( camera, player, domElement ) {
 
 		}
 
-		this.camera.lookAt( this.center );
+		this.camera.setTarget( this.center );
 
 		thetaDelta = 0;
 		phiDelta = 0;
 		scale = 1;
-
-
 
 		if ( state === STATE.NONE && playerIsMoving ) {
 
@@ -214,7 +200,6 @@ THREE.PlayerControls = function ( camera, player, domElement ) {
 			playerIsMoving = false;
 
 		}
-
 	};
 
 	this.checkKeyStates = function () {
@@ -439,6 +424,7 @@ THREE.PlayerControls = function ( camera, player, domElement ) {
 	this.domElement.addEventListener('keydown', onKeyDown, false );
 	this.domElement.addEventListener('keyup', onKeyUp, false );
 
+
 };
 
-THREE.PlayerControls.prototype = Object.create( THREE.EventDispatcher.prototype );
+// BABYLON.PlayerControls.prototype = Object.create( BABYLON.EventDispatcher.prototype );
