@@ -4,7 +4,7 @@ Custom 3D world conferencing software using Babylon.js for a more interactive, c
 
 Inspiration: As high schoolers ourselves, we've experienced first-hand the lack of community that virtual learning brings. We found that virtual learning wasn't very engaging for students and it lacked a sense of community and connectivity. We wanted to bridge this gap/divide by re-imagining the classroom environment. By taking advantage of the current situation and using at-home learning to transform the way classes are taught.
 
-What it does: IntR-Connect transforms the classroom into a VR-Chat style environment, with multiplayer and VR compatibility.
+What it does: IntR-Connect transforms the classroom into a VR-Chat style environment, with multiplayer and VR compatibility, the UUID linking system to have private rooms for users. 
 
 How I built it: We wanted IntR-Connect to be as lightweight as possible, so we used the Babylon.js game engine
 
